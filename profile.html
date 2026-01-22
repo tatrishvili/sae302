@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Justine__</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Background with floating icons -->
+    <div class="register-background">
+        <!-- Floating Icons in background -->
+        <div class="floating-icon heart-icon pink" style="top: 80px; left: 15%;"></div>
+        <div class="floating-icon heart-icon orange" style="top: 150px; right: 12%;"></div>
+        <div class="floating-icon heart-icon pink" style="bottom: 200px; left: 10%;"></div>
+        <div class="floating-icon heart-icon pink" style="bottom: 250px; right: 8%;"></div>
+        <div class="floating-icon message-icon orange" style="top: 200px; left: 20%;"></div>
+        <div class="floating-icon message-icon pink" style="top: 180px; right: 18%;"></div>
+        <div class="floating-icon heart-icon orange" style="top: 50%; left: 12%;"></div>
+        <div class="floating-icon heart-icon orange" style="top: 55%; right: 15%;"></div>
+    </div>
+
+    <!-- Left Character -->
+    <div class="side-character left">
+        <img src="images/justine-left.png" alt="Justine">
+    </div>
+
+    <!-- Right Character -->
+    <div class="side-character right">
+        <img src="images/justine-right.png" alt="Justine">
+    </div>
+
+    <!-- iPhone Frame -->
+    <div class="iphone-frame">
+        <div class="iphone-notch"></div>
+        <div class="iphone-screen">
+            <!-- Profile Page Content -->
+            <div class="profile-page">
+                <!-- Header with Logo and Name -->
+                <div class="profile-header">
+                    <div class="logo">
+                        <img src="images/logo-amically.svg" alt="logo">
+                    </div>
+                    <div class="app-name">Amicelly</div>
+                    <div class="menu-icon">☰</div>
+                </div>
+
+                <!-- Success Notification -->
+                <div class="success-notification" id="successNotification">
+                    <span class="check-icon">✓</span>
+                    Your account has been successfully created!
+                </div>
+
+                <!-- Profile Content -->
+                <div class="profile-content">
+                    <!-- Profile Picture Section -->
+                    <div class="profile-picture-section">
+                        <div class="profile-picture-container">
+                            <div class="profile-picture" id="profilePicture">
+                                <img id="profileImage" src="" alt="Profile" style="display: none;">
+                                <div class="placeholder-icon" id="placeholderIcon">
+                                </div>
+                            </div>
+                        </div>
+                        <h2 class="username">Justine__</h2>
+                        <p class="upload-instruction">Choose your profile picture</p>
+                    </div>
+
+                    <div class="photo-options">
+                        <div class="photo-option" data-photo="images/justine1.png" onclick="selectProfilePhoto(this)">
+                            <img src="images/justine1.png" alt="Option 1">
+                            <div class="photo-overlay">
+                                <span class="check-mark">✓</span>
+                            </div>
+                        </div>
+                        <div class="photo-option" data-photo="images/justine3.png" onclick="selectProfilePhoto(this)">
+                            <img src="images/justine3.png" alt="Option 2">
+                            <div class="photo-overlay">
+                                <span class="check-mark">✓</span>
+                            </div>
+                        </div>
+                        <div class="photo-option" data-photo="images/justine-right.png" onclick="selectProfilePhoto(this)">
+                            <img src="images/justine-right.png" alt="Option 3">
+                            <div class="photo-overlay">
+                                <span class="check-mark">✓</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Continue Button -->
+                    <div class="continue-section">
+                        <button class="continue-btn" onclick="continueToFeed()" id="continueBtn" disabled>Continue to Explore Amicelly</button>
+                    </div>
+                </div>
+
+               
+                <div class="bottom-navigation">
+                    <button class="nav-btn active">
+                        <img src="images/normal-icon1.svg" alt="Home" class="nav-icon-img">
+                    </button>
+                    <button class="nav-btn">
+                        <img src="images/normal-icon2.svg" alt="Search" class="nav-icon-img">
+                    </button>
+                    <button class="nav-btn">
+                        <img src="images/normal-icon3.svg" alt="Add" class="nav-icon-img">
+                    </button>
+                    <button class="nav-btn">
+                        <div class="nav-profile-pic" id="navProfilePic">
+                            <img id="navProfileImage" src="" alt="Profile" style="display: none;">
+                            <div class="nav-placeholder">
+                                <img src="images/profil-icon.webp" alt="icon profile">
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# Node.js / JS dependencies
+node_modules/
+
+# Python caches
+*.pyc
+__pycache__/
+
+# Environment / secret files
+.env
+
+# OS / editor files
+.DS_Store
+*.swp

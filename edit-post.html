@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post - Amicelly</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="register-background">
+        <div class="floating-icon heart-icon pink" style="top: 80px; left: 15%;"></div>
+        <div class="floating-icon heart-icon orange" style="top: 150px; right: 12%;"></div>
+        <div class="floating-icon heart-icon pink" style="bottom: 200px; left: 10%;"></div>
+        <div class="floating-icon heart-icon pink" style="bottom: 250px; right: 8%;"></div>
+        <div class="floating-icon message-icon orange" style="top: 200px; left: 20%;"></div>
+        <div class="floating-icon message-icon pink" style="top: 180px; right: 18%;"></div>
+        <div class="floating-icon heart-icon orange" style="top: 50%; left: 12%;"></div>
+        <div class="floating-icon heart-icon orange" style="top: 55%; right: 15%;"></div>
+    </div>
+
+    <div class="side-character left">
+        <img src="images/justine-left.png" alt="Justine">
+    </div>
+
+    <div class="side-character right">
+        <img src="images/justine-right.png" alt="Justine">
+    </div>
+
+    <div class="iphone-frame">
+        <div class="iphone-notch"></div>
+        <div class="iphone-screen">
+            <div class="edit-post-page">
+                <!-- Header -->
+                <div class="edit-header">
+                    <button class="back-btn" onclick="goBackToFeed()">✕</button>
+                    <div class="header-title">Create Post</div>
+                    <button class="next-btn" id="nextBtn" onclick="goToEditor()" disabled>Next</button>
+                </div>
+
+                <!-- Step 1: Photo Selection -->
+                <div class="step-container" id="stepSelection">
+                    <h3 class="step-title">Choose a photo to share</h3>
+                    <p class="step-subtitle">Everyone looks so good... maybe I should pick my best one</p>
+                    
+                    <div class="post-photo-options">
+                        <div class="post-photo-option" data-photo="images/justine1.png" onclick="selectPostPhoto(this)">
+                            <img src="images/justine1.png" alt="Option 1">
+                            <div class="photo-overlay">
+                                <span class="check-mark">✓</span>
+                            </div>
+                        </div>
+                        <div class="post-photo-option" data-photo="images/justine3.png" onclick="selectPostPhoto(this)">
+                            <img src="images/justine3.png" alt="Option 2">
+                            <div class="photo-overlay">
+                                <span class="check-mark">✓</span>
+                            </div>
+                        </div>
+                        <div class="post-photo-option" data-photo="images/justine2.png" onclick="selectPostPhoto(this)">
+                            <img src="images/justine2.png" alt="Option 3">
+                            <div class="photo-overlay">
+                                <span class="check-mark">✓</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-container hidden" id="stepEditor">
+                    <div class="editor-preview">
+                        <canvas id="photoCanvas"></canvas>
+                        <img id="originalPhoto" src="" alt="Selected photo" style="display: none;">
+                    </div>
+
+                    <div class="justine-thought">
+                        <p>"Everyone looks so good... maybe I should retouch it just a little."</p>
+                    </div>
+
+                    <div class="editor-controls">
+                        <div class="control-group">
+                            <label>Brightness</label>
+                            <input type="range" id="brightnessSlider" min="-50" max="50" value="0" oninput="applyFilters()">
+                        </div>
+                        <div class="control-group">
+                            <label>Blur</label>
+                            <input type="range" id="blurSlider" min="0" max="10" value="0" oninput="applyFilters()">
+                        </div>
+                        <div class="control-group">
+                            <label>Filter</label>
+                            <select id="filterSelect" onchange="applyFilters()">
+                                <option value="none">None</option>
+                                <option value="warm">Warm</option>
+                                <option value="cool">Cool</option>
+                                <option value="vintage">Vintage</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="editor-actions">
+                        <button class="edit-btn secondary" onclick="resetEdits()">Reset</button>
+                        <button class="edit-btn primary" onclick="savePost()">Post It!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="edit-post.js"></script>
+</body>
+</html>

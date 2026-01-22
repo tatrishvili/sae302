@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Disconnection</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="register-background">
+        <div class="floating-icon heart-icon pink" style="top: 80px; left: 15%;"></div>
+        <div class="floating-icon heart-icon orange" style="top: 150px; right: 12%;"></div>
+        <div class="floating-icon heart-icon pink" style="bottom: 200px; left: 10%;"></div>
+        <div class="floating-icon heart-icon pink" style="bottom: 250px; right: 8%;"></div>
+        <div class="floating-icon message-icon orange" style="top: 200px; left: 20%;"></div>
+        <div class="floating-icon message-icon pink" style="top: 180px; right: 18%;"></div>
+        <div class="floating-icon heart-icon orange" style="top: 50%; left: 12%;"></div>
+        <div class="floating-icon heart-icon orange" style="top: 55%; right: 15%;"></div>
+    </div>
+
+    <div class="side-character left">
+        <img src="images/justine-left.png" alt="Justine">
+    </div>
+
+
+    <div class="side-character right">
+        <img src="images/justine-right.png" alt="Justine">
+    </div>
+
+    <div class="iphone-frame">
+        <div class="iphone-notch"></div>
+        <div class="iphone-screen">
+            <div class="register-page">
+                <div class="register-header">
+                    <div class="logo">
+                      <img src="images/logo-amically.svg" alt="logo">
+                    </div>
+                    <div class="app-name">Amically</div>
+                    <div class="menu-icon">☰</div>
+                </div>
+
+                <!-- Main Form Container -->
+                <div class="form-container">
+                    <!-- Floating hearts inside form -->
+                    <div class="form-floating-icon heart orange" style="top: 40px; left: 30px;"></div>
+                    <div class="form-floating-icon heart pink" style="top: 60px; left: 50px;"></div>
+                    <div class="form-floating-icon heart orange" style="top: 50px; right: 40px;"></div>
+
+                    <h2 class="form-title">Sign up</h2>
+
+                    <!-- Instruction Text -->
+                    <div class="signup-instruction">
+                        <p>👀 Watch Justine create her profile...</p>
+                    </div>
+
+                    <!-- Form -->
+                    <form class="signup-form" onsubmit="return goToProfile(event)">
+                        <input type="text" placeholder="Nickname" id="nickname" value="" readonly>
+                        <input type="password" placeholder="Password" value="••••••••" readonly>
+                        <input type="password" placeholder="Confirm password" value="••••••••" readonly>
+                        <input type="email" placeholder="E-mail" value="justine@email.com" readonly>
+                        
+                        <button type="submit" class="submit-btn">Sign Up</button>
+
+                        <!-- Action Instruction -->
+                        <div class="action-instruction">
+                            👉 Click "Sign Up" to continue Justine's story
+                        </div>
+
+                        <div class="terms">
+                            <input type="checkbox" id="terms" checked disabled>
+                            <label for="terms">I agree to Privacy Policy of the Amically</label>
+                        </div>
+                    </form>
+
+                    <!-- Footer link -->
+                    <div class="form-footer">
+                        You already have an Account ?
+                        <a href="#">Sign in</a>
+                    </div>
+                </div>
+
+                <!-- Bottom App Name -->
+                <div class="bottom-app-name">Amically</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

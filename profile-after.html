@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justine — Profile</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="iphone-frame">
+    <div class="iphone-notch"></div>
+    <div class="iphone-screen profile-after">
+
+        <div class="profile-top-bar">
+            <span class="profile-username">Justine__</span>
+            <span class="menu-icon">☰</span>
+        </div>
+
+        <div class="profile-main">
+            <div class="profile-banner-section">
+                <img id="profileBannerImage" src="images/banner.png" alt="Banner" class="banner-img">
+                <div class="profile-header-content">
+                    <div class="profile-avatar-large">
+                        <img id="profileAfterImage" alt="Profile" class="profile-img">
+                        <div class="placeholder-icon" id="placeholderIconAfter">
+                            <img src="images/profil-icon.webp" alt="Profile placeholder">
+                        </div>
+                    </div>
+
+                    <div class="profile-info-text">
+                        <h2 class="profile-name">Justine Renaud</h2>
+                        
+                        <div class="profile-status-buttons">
+                            <button class="status-btn">#Art</button>
+                            <button class="status-btn">#Music</button>
+                        </div>
+
+                        <button class="edit-profile-btn">Edit profile</button>
+                    </div>
+
+                    <button class="profile-edit-icon">✎</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- STATS -->
+        <div class="profile-stats-bar">
+            <div class="stat-item">
+                <strong id="postCount">0</strong>
+                <span class="stat-label">Post:</span>
+            </div>
+            <div class="stat-item">
+                <strong id="postCount">0</strong>
+                <span class="stat-label">Followers</span>
+            </div>
+            <div class="stat-item">
+                <strong>0</strong>
+                <span class="stat-label">Following</span>
+            </div>
+        </div>
+
+        <div class="profile-posts-container">
+            <div class="profile-posts-grid" id="profilePostsGrid">
+            </div>
+        </div>
+
+        <div class="profile-continue-section">
+            <button class="continue-scrolling-btn" onclick="continueBrowsing()">Continue scrolling</button>
+        </div>
+
+        <div class="bottom-navigation">
+            <button class="nav-btn">
+                <img src="images/normal-icon1.svg" alt="Home">
+            </button>
+            <button class="nav-btn">
+                <img src="images/normal-icon2.svg" alt="Search">
+            </button>
+            <button class="nav-btn">
+                <img src="images/normal-icon3.svg" alt="Add">
+            </button>
+            <button class="nav-btn active">
+                <div class="nav-profile-pic">
+                    <img id="navAfterProfileImage" alt="Profile" style="display: none;">
+                    <div class="nav-placeholder">
+                        <img src="images/profil-icon.webp" alt="Profile icon">
+                    </div>
+                </div>
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<script src="profil-after.js"></script>
+</body>
+</html>
