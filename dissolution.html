@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dissolution - Amically</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .dissolution-stage {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Broken Phone Frame */
+        .broken-phone {
+            position: relative;
+            width: 200px;
+            height: 400px;
+            background: linear-gradient(135deg, #333 0%, #555 100%);
+            border-radius: 30px;
+            border: 12px solid #222;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), inset 0 0 40px rgba(255, 182, 198, 0.3);
+            animation: phoneShake 0.5s ease-in-out, phoneCrack 1.5s ease-out 0.5s forwards;
+            overflow: hidden;
+        }
+
+        @keyframes phoneShake {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(-10px) rotate(-2deg); }
+            75% { transform: translateX(10px) rotate(2deg); }
+        }
+
+        @keyframes phoneCrack {
+            0% {
+                opacity: 1;
+                background: linear-gradient(135deg, #333 0%, #555 100%);
+                border-color: #222;
+            }
+            50% {
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), inset 0 0 40px rgba(255, 182, 198, 0.3);
+            }
+            100% {
+                opacity: 0.3;
+                background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+                border-color: #111;
+            }
+        }
+
+        /* Cracks on phone */
+        .phone-cracks {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            animation: cracksAppear 1s ease-out 0.8s forwards;
+            opacity: 0;
+        }
+
+        @keyframes cracksAppear {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .crack {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(255, 100, 100, 0.6), transparent);
+            animation: crackGrow 0.8s ease-out forwards;
+        }
+
+        @keyframes crackGrow {
+            from {
+                width: 0;
+                height: 2px;
+            }
+            to {
+                width: 100%;
+                height: 2px;
+            }
+        }
+
+        .crack:nth-child(1) {
+            top: 30%;
+            left: 0;
+            animation-delay: 0.8s;
+            transform: rotate(-15deg);
+        }
+
+        .crack:nth-child(2) {
+            top: 50%;
+            left: 0;
+            animation-delay: 1s;
+            transform: rotate(10deg);
+        }
+
+        .crack:nth-child(3) {
+            top: 70%;
+            left: 0;
+            animation-delay: 1.2s;
+            transform: rotate(-8deg);
+        }
+
+        /* Likes flowing out */
+        .like-flow {
+            position: absolute;
+            font-size: 40px;
+            pointer-events: none;
+            animation: likeFloat 2s ease-out forwards;
+        }
+
+        @keyframes likeFloat {
+            0% {
+                opacity: 1;
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-400px) translateX(150px) rotate(360deg) scale(0.1);
+            }
+        }
+
+        .like-flow-left {
+            animation: likeFloatLeft 2s ease-out forwards;
+        }
+
+        @keyframes likeFloatLeft {
+            0% {
+                opacity: 1;
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-400px) translateX(-150px) rotate(-360deg) scale(0.1);
+            }
+        }
+
+        /* Glitch effect on phone */
+        .phone-glitch {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            animation: glitchEffect 0.1s ease-in-out infinite 0.5s;
+            opacity: 0;
+        }
+
+        @keyframes glitchEffect {
+            0%, 100% { 
+                opacity: 0;
+                clip-path: polygon(0 0, 100% 0, 100% 20%, 0 30%);
+            }
+            50% { 
+                opacity: 0.5;
+                clip-path: polygon(0 60%, 100% 50%, 100% 100%, 0 100%);
+            }
+        }
+
+        /* Metallic sound wave effect (visual) */
+        .sound-wave {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 2px solid rgba(255, 100, 100, 0.5);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: soundPulse 0.6s ease-out 0.7s forwards;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @keyframes soundPulse {
+            from {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            to {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(2);
+            }
+        }
+
+        /* Message Text */
+        .dissolution-message {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            opacity: 0;
+            animation: messageAppear 0.8s ease-out 2.5s forwards;
+            z-index: 10;
+        }
+
+        @keyframes messageAppear {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        /* Fade to black and transition */
+        .fade-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            opacity: 0;
+            pointer-events: none;
+            animation: fadeToBlackEnd 2s ease-out 3.5s forwards;
+            z-index: 100;
+        }
+
+        @keyframes fadeToBlackEnd {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dissolution-stage">
+        <!-- Sound wave visualization -->
+        <div class="sound-wave"></div>
+
+        <!-- Broken Phone -->
+        <div class="broken-phone">
+            <!-- Cracks -->
+            <div class="phone-cracks">
+                <div class="crack"></div>
+                <div class="crack"></div>
+                <div class="crack"></div>
+            </div>
+
+            <!-- Glitch effect -->
+            <div class="phone-glitch"></div>
+        </div>
+
+        <!-- Likes flowing out container -->
+        <div id="likesContainer"></div>
+
+        <!-- Message -->
+        <div class="dissolution-message">
+            "Disconnecting..."
+        </div>
+
+        <!-- Fade overlay for transition -->
+        <div class="fade-overlay"></div>
+    </div>
+
+    <script>
+        // Generate flowing likes
+        function generateFlowingLikes() {
+            const container = document.getElementById('likesContainer');
+            const likeSymbols = ['❤️', '💭', '👍', '✨', '💫'];
+
+            // Start generating likes after phone shakes
+            setTimeout(() => {
+                for (let i = 0; i < 80; i++) {
+                    setTimeout(() => {
+                        const like = document.createElement('div');
+                        const symbol = likeSymbols[Math.floor(Math.random() * likeSymbols.length)];
+                        
+                        // Alternate between left and right - use i % 2 to determine direction
+                        if (i % 2 === 0) {
+                            // Even numbers go RIGHT
+                            like.className = 'like-flow';
+                        } else {
+                            // Odd numbers go LEFT
+                            like.className = 'like-flow like-flow-left';
+                        }
+                        
+                        like.textContent = symbol;
+                        // Position randomly across the width
+                        like.style.left = Math.random() * 400 - 200 + 'px';
+                        like.style.top = Math.random() * 150 - 75 + 'px';
+                        container.appendChild(like);
+
+                        // Remove after animation
+                        setTimeout(() => like.remove(), 2000);
+                    }, i * 50);
+                }
+            }, 800);
+        }
+
+        // Auto transition to reflection page
+        function transitionToReflection() {
+            setTimeout(() => {
+                window.location.href = 'reflection.html';
+            }, 5500);
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            generateFlowingLikes();
+            transitionToReflection();
+        });
+    </script>
+</body>
+</html>
+

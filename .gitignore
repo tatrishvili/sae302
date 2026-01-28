@@ -1,13 +1,18 @@
-# Node.js / JS dependencies
+# OS junk
+*Zone.Identifier
+.DS_Store
+Thumbs.db
+
+# SCSS (compiled locally only if you want)
+# If you DO want to keep SCSS, remove this line
+# scss/
+
+# Source maps (optional)
+*.map
+
+# Videos (usually too heavy)
+videos/
+
+# Node / build junk (just in case)
 node_modules/
 
-# Python caches
-*.pyc
-__pycache__/
-
-# Environment / secret files
-.env
-
-# OS / editor files
-.DS_Store
-*.swp

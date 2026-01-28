@@ -19,7 +19,7 @@
     </div>
 
     <div class="side-character left">
-        <img src="images/justine-left.png" alt="Justine">
+        <img src="images/mirroir.png" alt="Justine">
     </div>
 
     <div class="side-character right">
@@ -158,7 +158,7 @@
                         </div>
                     </div>
 
-                    <div class="post-card orange-card" data-scroll-trigger="post-4">
+                    <div class="post-card pink-card" data-scroll-trigger="post-4">
                         <div class="post-header">
                             <div class="user-info">
                                 <div class="user-avatar">
@@ -188,7 +188,7 @@
                         </div>
                     </div>
 
-                    <div class="post-card orange-card" data-scroll-trigger="post-5">
+                    <div class="post-card yellow-card" data-scroll-trigger="post-5">
                         <div class="post-header">
                             <div class="user-info">
                                 <div class="user-avatar">
@@ -218,7 +218,7 @@
                         </div>
                     </div>
 
-                    <div class="post-card pink-card" data-scroll-trigger="post-6">
+                    <div class="post-card orange-card" data-scroll-trigger="post-6">
                         <div class="post-header">
                             <div class="user-info">
                                 <div class="user-avatar">
@@ -248,7 +248,7 @@
                         </div>
                     </div>
 
-                    <div class="post-card pink-card" data-scroll-trigger="post-7">
+                    <div class="post-card yellow-card" data-scroll-trigger="post-7">
                         <div class="post-header">
                             <div class="user-info">
                                 <div class="user-avatar">
@@ -264,7 +264,7 @@
                             <img src="images/image9.png" alt="Post" class="post-img">
                         </div>
                         <div class="post-caption">
-                            living my best life right now 💖
+                           A mirror selfies.
                         </div>
                         <div class="post-footer">
                             <div class="likes">
@@ -284,13 +284,21 @@
                    <div class="popup-box">
                      <p class="popup-text">
                        "Everyone is posting something…  
-                       Maybe I should too."
+                        should i post it as well ?"
                      </p>
                      <button id="popupPostBtn">Post something</button>
                    </div>
                  </div>
-            </div>
 
+                 <div id="justineSecondPostPopup" class="justine-popup hidden">
+                   <div class="popup-box">
+                     <p class="popup-text">
+                       "To get more followers maybe i should post another photo"
+                     </p>
+                     <button id="popupSecondPostBtn" onclick="goToSecondPost()">Post another photo</button>
+                   </div>
+                 </div>
+            </div>
                  <div class="bottom-navigation">
                     <button class="nav-btn active">
                         <img src="images/normal-icon1.svg" alt="Home" class="nav-icon-img">
@@ -314,7 +322,6 @@
         </div>
     </div>
 
-    <!-- Justine's Thought Transition - Outside scrollable area -->
     <div class="justine-transition hidden" id="justineTransition1">
         <div class="transition-overlay">
             <img src="images/emotion1.png" alt="Justine" class="justine-face">
@@ -324,6 +331,18 @@
         </div>
     </div>
 
+    <div class="justine-transition hidden" id="justineTransition2">
+        <div class="transition-overlay">
+            <img src="images/emotion3.png" alt="Justine" class="justine-face">
+            <div class="thought-bubble">
+                <p>"Why dont i look like them ?"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popups removed - using direct button in psychologist modal instead -->
+
+    <!-- Psychologist Chat Modal -->
     <!-- Create Post Modal - Outside scrollable area -->
     <div class="create-post-modal hidden" id="createPostModal">
         <div class="modal-content">
@@ -336,5 +355,8 @@
     </div>
 
     <script src="feed.js"></script>
+    <script src="quiz.js"></script>
+    <script src="quiz-results.js"></script>
+    <script src="psychologist.js"></script>
 </body>
 </html>

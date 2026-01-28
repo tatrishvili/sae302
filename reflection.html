@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research & Reflection - Amically</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #151515 100%);
+            color: #e0e0e0;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Floating Hearts Animation */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            color: #FFB6C6;
+            font-size: 20px;
+            opacity: 0.3;
+            animation: float-up 8s ease-in infinite;
+        }
+
+        .heart:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 9s; }
+        .heart:nth-child(2) { left: 20%; animation-delay: 1s; animation-duration: 10s; }
+        .heart:nth-child(3) { left: 30%; animation-delay: 2s; animation-duration: 9.5s; }
+        .heart:nth-child(4) { left: 40%; animation-delay: 0.5s; animation-duration: 8.5s; }
+        .heart:nth-child(5) { left: 50%; animation-delay: 1.5s; animation-duration: 10s; }
+        .heart:nth-child(6) { left: 60%; animation-delay: 2.5s; animation-duration: 9s; }
+        .heart:nth-child(7) { left: 70%; animation-delay: 0.3s; animation-duration: 8.8s; }
+        .heart:nth-child(8) { left: 80%; animation-delay: 1.2s; animation-duration: 9.2s; }
+        .heart:nth-child(9) { left: 90%; animation-delay: 2.1s; animation-duration: 10.2s; }
+
+        @keyframes float-up {
+            0% {
+                bottom: -50px;
+                opacity: 0.3;
+                transform: translateX(0);
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                bottom: 100vh;
+                opacity: 0;
+                transform: translateX(100px);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 40px 80px 40px;
+            margin-top: 60px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 100px;
+            padding-bottom: 50px;
+            border-bottom: 2px solid #FFB6C6;
+        }
+
+        h1 {
+            font-size: 52px;
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: #FFB6C6;
+            font-style: italic;
+            font-weight: 300;
+            margin-bottom: 50px;
+        }
+
+        .table-of-contents {
+            background: rgba(255, 182, 198, 0.08);
+            border: 1px solid rgba(255, 182, 198, 0.2);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 100px;
+            backdrop-filter: blur(10px);
+        }
+
+        .toc-title {
+            font-size: 20px;
+            color: #FFB6C6;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .toc-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            list-style: none;
+        }
+
+        .toc-item {
+            margin: 0;
+        }
+
+        .toc-link {
+            display: block;
+            padding: 12px 20px;
+            color: #FFB6C6;
+            text-decoration: none;
+            border-left: 3px solid #FFB6C6;
+            padding-left: 18px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .toc-link:hover {
+            color: #FFB6C6;
+            padding-left: 25px;
+            background: rgba(255, 182, 198, 0.1);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 182, 198, 0.2);
+            z-index: 1000;
+            padding: 15px 40px;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #d0d0d0;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding-bottom: 5px;
+        }
+
+        .nav-links a:hover {
+            color: #FFB6C6;
+            border-bottom: 2px solid #FFB6C6;
+        }
+
+        .section {
+            margin-bottom: 100px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 60px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 182, 198, 0.15);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 182, 198, 0.3);
+        }
+
+        .article-title {
+            font-size: 36px;
+            color: #FFB6C6;
+            margin-bottom: 12px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .article-author {
+            font-size: 15px;
+            color: #FFB6C6;
+            margin-bottom: 30px;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .article-intro {
+            font-size: 17px;
+            color: #d0d0d0;
+            margin-bottom: 45px;
+            line-height: 1.9;
+            border-left: 4px solid #FFB6C6;
+            padding-left: 25px;
+        }
+
+        .paragraphs {
+            display: grid;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .paragraph {
+            padding: 25px;
+            background: rgba(255, 182, 198, 0.08);
+            border-radius: 8px;
+            border-left: 4px solid #FFB6C6;
+            transition: all 0.3s ease;
+        }
+
+        .paragraph:hover {
+            background: rgba(255, 182, 198, 0.12);
+            transform: translateX(8px);
+        }
+
+        .paragraph-title {
+            font-size: 19px;
+            color: #FFB6C6;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .paragraph-text {
+            font-size: 16px;
+            color: #c0c0c0;
+            line-height: 1.85;
+        }
+
+        .interviews-section {
+            margin-bottom: 100px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 60px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 182, 198, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: #FFB6C6;
+            margin-bottom: 50px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .interviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 0;
+        }
+
+        .interview-card {
+            background: rgba(255, 182, 198, 0.08);
+            border: 2px dashed rgba(255, 182, 198, 0.3);
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .interview-card:hover {
+            background: rgba(255, 182, 198, 0.12);
+            border-color: rgba(255, 182, 198, 0.5);
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 200px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 50px;
+            color: #FFB6C6;
+        }
+
+        .interview-label {
+            font-size: 18px;
+            color: #FFB6C6;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .interview-note {
+            font-size: 14px;
+            color: #999;
+            font-style: italic;
+        }
+
+        .bibliography-section {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 60px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 182, 198, 0.15);
+            margin-bottom: 100px;
+            backdrop-filter: blur(10px);
+        }
+
+        .bibliography-section h2 {
+            font-size: 36px;
+            color: #FFB6C6;
+            margin-bottom: 45px;
+            font-weight: 700;
+        }
+
+        .bibliography-item {
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 182, 198, 0.2);
+        }
+
+        .bibliography-item:last-child {
+            border-bottom: none;
+        }
+
+        .bib-author {
+            font-weight: 600;
+            color: #FFB6C6;
+            font-size: 17px;
+        }
+
+        .bib-title {
+            color: #d0d0d0;
+            font-style: italic;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        .bib-link {
+            color: #FFB6C6;
+            text-decoration: none;
+            font-size: 15px;
+            word-break: break-all;
+            transition: all 0.3s ease;
+        }
+
+        .bib-link:hover {
+            color: #d0d0d0;
+        }
+
+        .testimonies-section {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 60px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 182, 198, 0.15);
+            margin-bottom: 100px;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonies-section h2 {
+            font-size: 36px;
+            color: #FFB6C6;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        .testimonies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 35px;
+        }
+
+        .testimony {
+            padding: 30px;
+            background: rgba(255, 138, 0, 0.08);
+            border-radius: 8px;
+            border-left: 4px solid #FFB6C6;
+            transition: all 0.3s ease;
+        }
+
+        .testimony:hover {
+            background: rgba(255, 138, 0, 0.12);
+            transform: translateY(-5px);
+        }
+
+        .testimony-author {
+            font-weight: 600;
+            color: #FFB6C6;
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+
+        .testimony-text {
+            color: #c0c0c0;
+            font-size: 15px;
+            line-height: 1.85;
+            font-style: italic;
+        }
+
+        .questionnaire-section {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 60px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 182, 198, 0.15);
+            margin-bottom: 100px;
+            backdrop-filter: blur(10px);
+        }
+
+        .questionnaire-section h2 {
+            font-size: 36px;
+            color: #FFB6C6;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .questionnaire-intro {
+            font-size: 16px;
+            color: #d0d0d0;
+            margin-bottom: 45px;
+            line-height: 1.8;
+        }
+
+        .question-card {
+            background: rgba(255, 182, 198, 0.08);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #FFB6C6;
+            transition: all 0.3s ease;
+        }
+
+        .question-card:hover {
+            background: rgba(255, 182, 198, 0.12);
+            transform: translateX(5px);
+        }
+
+        .question-text {
+            font-weight: 600;
+            font-size: 18px;
+            color: #FFB6C6;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .question-card textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 182, 198, 0.3);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #d0d0d0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+
+        .question-card textarea:focus {
+            outline: none;
+            border-color: #FFB6C6;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .question-card textarea::placeholder {
+            color: #999;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .option-item input[type="radio"] {
+            cursor: pointer;
+            accent-color: #FFB6C6;
+        }
+
+        .option-item label {
+            margin: 0;
+            cursor: pointer;
+            color: #d0d0d0;
+            font-size: 15px;
+        }
+
+        #status {
+            display: none;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        #statusBottom {
+            display: none;
+            padding: 18px;
+            border-radius: 8px;
+            margin-top: 25px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #submitBtn {
+            background: #e99dae;
+            color: white;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        #submitBtn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.4);
+        }
+
+        #submitBtn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .closing {
+            text-align: center;
+            padding: 70px 50px;
+            background: linear-gradient(135deg, rgba(255, 182, 198, 0.1) 0%, rgba(255, 138, 0, 0.1) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 182, 198, 0.2);
+            margin-top: 100px;
+        }
+
+        .closing h2 {
+            font-size: 36px;
+            color: white;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .closing p {
+            font-size: 17px;
+            color: #d0d0d0;
+            margin-bottom: 20px;
+            line-height: 1.85;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 40px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #e99dae;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #FFB6C6;
+            border: 2px solid #FFB6C6;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 182, 198, 0.1);
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 50px 25px;
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .section, .interviews-section, .bibliography-section, .testimonies-section {
+                padding: 40px 25px;
+            }
+
+            .article-title {
+                font-size: 28px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .interviews-grid, .testimonies-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts">
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav>
+        <div class="nav-container">
+            <a href="feed.html" class="nav-logo">
+                <img src="images/logo-amically.svg" alt="Amically">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#article1">Research</a></li>
+                <li><a href="#interviews">Interviews</a></li>
+                <li><a href="#bibliography">Bibliography</a></li>
+                <li><a href="#questionnaire">Survey</a></li>
+                <li><a href="feed.html">Back to Feed</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container fade-in">
+        <div class="header">
+            <h1>The Truth About Social Media</h1>
+            <p class="subtitle">Understanding the Impact of Social Media on Young People</p>
+        </div>
+
+        <!-- TABLE OF CONTENTS / NAVIGATION -->
+        <div class="table-of-contents">
+            <div class="toc-title">Jump to Section</div>
+            <ul class="toc-list">
+                <li class="toc-item"><a href="#article1" class="toc-link">Camille Miret Institute</a></li>
+                <li class="toc-item"><a href="#article2" class="toc-link">University of Rouen</a></li>
+                <li class="toc-item"><a href="#article3" class="toc-link">Self-Esteem & Identity</a></li>
+                <li class="toc-item"><a href="#interviews" class="toc-link">Interviews</a></li>
+                <li class="toc-item"><a href="#bibliography" class="toc-link">Bibliography</a></li>
+                <li class="toc-item"><a href="#questionnaire" class="toc-link">Survey</a></li>
+            </ul>
+        </div>
+
+        <!-- ARTICLE 1: CAMILLE MIRET INSTITUTE -->
+        <div class="section" id="article1">
+            <div class="article-title">Social Media and Adolescent Mental Health</div>
+            <div class="article-author">Dr. Edmond Manouélian, Psychiatrist at Camille Miret Institute</div>
+            <div class="article-intro">
+                In this article, Dr. Edmond Manouélian, a psychiatrist, explains that social media has profoundly transformed the way adolescents experience their social relationships, particularly when confronted with harassment and its psychological consequences.
+            </div>
+
+            <div class="paragraphs">
+                <div class="paragraph">
+                    <div class="paragraph-title">Transformation of Social Relationships</div>
+                    <div class="paragraph-text">
+                        Social media has profoundly changed the way adolescents experience their relationships, amplifying social tensions and situations of harassment that were previously limited to school environments.
+                    </div>
+                </div>
+
+                <div class="paragraph">
+                    <div class="paragraph-title">The Continuity of Cyberbullying</div>
+                    <div class="paragraph-text">
+                        Unlike traditional school bullying, which could end once the student returned home, cyberbullying never stops. Messages, comments, photos, and humiliating videos can be shared at any time, following the victim everywhere. As a result, adolescents no longer have a safe space, which intensifies stress, fear, and feelings of helplessness.
+                    </div>
+                </div>
+
+                <div class="paragraph">
+                    <div class="paragraph-title">Social Exclusion and Invisibility</div>
+                    <div class="paragraph-text">
+                        Today, not owning a phone or not being present on social media can lead to marginalization. Adolescents who do not participate in online exchanges may be left out of discussions, groups, and events, reinforcing feelings of isolation and social invisibility.
+                    </div>
+                </div>
+
+                <div class="paragraph">
+                    <div class="paragraph-title">Psychological Consequences</div>
+                    <div class="paragraph-text">
+                        Constant exposure to the judgment of others can cause chronic anxiety, sleep disorders, decreased self-esteem, and in the most severe cases, depression. When misused or poorly supervised, social media becomes an aggravating factor in adolescent distress.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ARTICLE 2: UNIVERSITY OF ROUEN -->
+        <div class="section" id="article2">
+            <div class="article-title">An Hyper-Awareness of the Self That Amplifies Young People's Distress</div>
+            <div class="article-author">University of Rouen Normandy</div>
+            <div class="article-intro">
+                This article adopts a sociological and psychological approach, explaining that social media is not merely a communication tool but acts as a "distorting mirror" of reality that influences how young people perceive themselves.
+            </div>
+
+            <div class="paragraphs">
+                <div class="paragraph">
+                    <div class="paragraph-title">Social Media as Distorting Mirrors</div>
+                    <div class="paragraph-text">
+                        Social media does not reflect reality but presents an idealized version of life. Young people are constantly exposed to perfect bodies, happy lives, and staged success. This constant comparison creates a hyper-awareness of the self, where adolescents observe and judge their own lives through the lens of social media.
+                    </div>
+                </div>
+
+                <div class="paragraph">
+                    <div class="paragraph-title">Comparison and Feelings of Inadequacy</div>
+                    <div class="paragraph-text">
+                        The constant comparison with staged lives creates feelings of inadequacy and continuous pressure to appear happy and perfect. This can lead to the impression of never being good enough or happy enough, generating deep psychological distress.
+                    </div>
+                </div>
+
+                <div class="paragraph">
+                    <div class="paragraph-title">Emotional Desensitization</div>
+                    <div class="paragraph-text">
+                        Repeated exposure to violent or intimate content trivializes emotions and blurs the boundary between private life and public space. Taboos disappear, and the sense of what is appropriate becomes distorted.
+                    </div>
+                </div>
+
+                <div class="paragraph">
+                    <div class="paragraph-title">Accepting Distress as Normal</div>
+                    <div class="paragraph-text">
+                        Researchers emphasize that distress is part of life. True mental health does not mean feeling good all the time. The danger of social media lies in the desire to measure, compare, and quantify everything, which prevents acceptance of moments of vulnerability. We must "depathologize" everyday life, accepting that occasional distress is normal and healthy.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ARTICLE 3: IMPACT OF SOCIAL MEDIA ON SELF-ESTEEM -->
+        <div class="section" id="article3">
+            <div class="article-title">The Impact of Social Media on Self-Esteem and Identity</div>
+            <div class="article-author">Prof. R.J. Starr, The Psychology of Us</div>
+            <div class="article-intro">
+                This article focuses on the psychological mechanisms at work in social media and their influence on identity construction, particularly among adolescents and young adults seeking constant validation online.
+            </div>
+
+            <div class="paragraphs">
+                <div class="paragraph">
+                    <div class="paragraph-title">Emotional Validation and Dopamine Rewards</div>
+                    <div class="paragraph-text">
+                        Social media functions as a system of emotional validation. Each like, comment, or reaction acts as a psychological reward. These interactions activate the brain's pleasure circuits, notably through the release of dopamine, making users dependent on others' approval.
+                    </div>
+                </div>
+
+                <div class="paragraph">
+                    <div class="paragraph-title">The Fragility of Self-Esteem</div>
+                    <div class="paragraph-text">
+                        When posts receive few reactions, adolescents may feel rejected, useless, or invisible. Conversely, strong recognition creates pressure to maintain an idealized image. This constant need for validation weakens authentic self-esteem.
+                    </div>
+                </div>
+
+                <div class="paragraph">
+                    <div class="paragraph-title">Identity Construction Through Others' Eyes</div>
+                    <div class="paragraph-text">
+                        Personal identity can be shaped by others' perceptions rather than internal values. Young people adapt their behavior, appearance, and opinions to match what is most appreciated online, complicating the development of a stable and authentic identity.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INTERVIEWS SECTION -->
+        <div class="interviews-section" id="interviews">
+            <h2 class="section-title">Interviews: Professional and Personal Perspectives</h2>
+            <div class="interviews-grid">
+                <div class="interview-card">
+                    <video width="100%" height="200" style="border-radius: 6px; margin-bottom: 20px; background: rgba(0, 0, 0, 0.3); object-fit: cover;" controls>
+                        <source src="videos/interview-eva.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="interview-label">Interview 1</div>
+                    <div class="interview-note">Eva</div>
+                </div>
+                <div class="interview-card">
+                    <video width="100%" height="200" style="border-radius: 6px; margin-bottom: 20px; background: rgba(0, 0, 0, 0.3); object-fit: cover;" controls>
+                        <source src="videos/Interview-psy.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="interview-label">Interview 2</div>
+                    <div class="interview-note">Noemie avisse, psychologist </div>
+                </div>
+                <div class="interview-card">
+                    <video width="100%" height="200" style="border-radius: 6px; margin-bottom: 20px; background: rgba(0, 0, 0, 0.3); object-fit: cover;" controls>
+                        <source src="videos/Interview-corentin.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="interview-label">Interview 3</div>
+                    <div class="interview-note">Corentin</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bibliography-section" id="bibliography">
+            <h2>Bibliography</h2>
+
+            <div class="bibliography-item">
+                <div class="bib-author">Manouélian, E. (Psychiatrist)</div>
+                <div class="bib-title">Why Social Media Impacts Teenagers: Advice from a Psychiatrist to Parents</div>
+                <div>Camille Miret Institute, Press Review</div>
+                <div style="margin-top: 8px;">
+                    <a href="https://www.institut-camille-miret.fr/revue-de-presse-pourquoi-les-reseaux-sociaux-impactent-les-adolescents-les-conseils-dun-psychiatre-aux-parents-2/" class="bib-link">
+                        https://www.institut-camille-miret.fr/revue-de-presse-pourquoi-les-reseaux-sociaux-impactent-les-adolescents-les-conseils-dun-psychiatre-aux-parents-2/
+                    </a>
+                </div>
+            </div>
+
+            <div class="bibliography-item">
+                <div class="bib-author">University of Rouen Normandy</div>
+                <div class="bib-title">Social Media: A Hyper-Awareness of Self That Amplifies the Distress of Young People</div>
+                <div style="margin-top: 8px;">
+                    <a href="https://www.univ-rouen.fr/actualites/reseaux-sociaux-une-hyper-conscience-de-soi-qui-amplifie-le-mal-etre-des-jeunes/" class="bib-link">
+                        https://www.univ-rouen.fr/actualites/reseaux-sociaux-une-hyper-conscience-de-soi-qui-amplifie-le-mal-etre-des-jeunes/
+                    </a>
+                </div>
+            </div>
+
+            <div class="bibliography-item">
+                <div class="bib-author">Starr, R.J.</div>
+                <div class="bib-title">The Impact of Social Media on Self-Esteem and Identity</div>
+                <div>The Psychology of Us</div>
+                <div style="margin-top: 8px;">
+                    <a href="https://profrjstarr.com/the-psychology-of-us/the-impact-of-social-media-on-self-esteem-and-identity" class="bib-link">
+                        https://profrjstarr.com/the-psychology-of-us/the-impact-of-social-media-on-self-esteem-and-identity
+                    </a>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px; padding-top: 35px; border-top: 1px solid rgba(255, 182, 198, 0.2);">
+                <div style="font-size: 20px; color: #FFB6C6; font-weight: 700; margin-bottom: 25px;">Witnesses & Participants</div>
+                <div style="color: #c0c0c0; font-size: 16px; line-height: 1.8;">
+                    <p><strong style="color: #FFB6C6;">Eva</strong> - Student</p>
+                    <p><strong style="color: #FFB6C6;">Anaïs</strong> - Student</p>
+                    <p><strong style="color: #FFB6C6;">Noemie Avisse</strong> - Psychologist</p>
+                    <p><strong style="color: #FFB6C6;">Corentin Fournaise</strong> - GEII Student</p>
+                    <p><strong style="color: #FFB6C6;">Street Interviews</strong> - Participants of various ages</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUESTIONNAIRE SECTION -->
+        <div class="questionnaire-section" id="questionnaire">
+            <h2>Participant Survey</h2>
+            <div class="questionnaire-intro">
+                <p>We would like to understand your perspective on social media and its impact on self-esteem. Your honest feedback is valuable and will help us better understand this important topic. All responses are anonymous and will be securely saved.</p>
+            </div>
+
+            <div id="status"></div>
+
+            <form id="quizForm">
+                <div class="question-card">
+                    <label class="question-text">1) How do you choose to present yourself when creating your online profile (e.g., do you use your face as a profile picture)?</label>
+                    <textarea rows="3" name="q1" placeholder="Your response..." required></textarea>
+                </div>
+
+                <div class="question-card">
+                    <label class="question-text">2) Why do some people change the way they present themselves online to please others?</label>
+                    <div class="options">
+                        <div class="option-item">
+                            <input type="radio" id="q2a" name="q2" value="To be accepted and better integrated socially" required>
+                            <label for="q2a">To be accepted and better integrated socially</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="q2b" name="q2" value="To get more likes, comments or attention">
+                            <label for="q2b">To get more likes, comments or attention</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="q2c" name="q2" value="Out of fear of judgment or rejection">
+                            <label for="q2c">Out of fear of judgment or rejection</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="q2d" name="q2" value="Because they lack self-confidence">
+                            <label for="q2d">Because they lack self-confidence</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <label class="question-text">3) Do social media show reality or a modified version of reality? Explain.</label>
+                    <textarea rows="3" name="q3" placeholder="Your response..." required></textarea>
+                </div>
+
+                <div class="question-card">
+                    <label class="question-text">4) Do you think that retouching photos can influence self-confidence? How?</label>
+                    <textarea rows="3" name="q4" placeholder="Your response..." required></textarea>
+                </div>
+
+                <div class="question-card">
+                    <label class="question-text">5) Why can likes and comments become important to some people?</label>
+                    <div class="options">
+                        <div class="option-item">
+                            <input type="radio" id="q5a" name="q5" value="Because they provide a feeling of recognition and appreciation" required>
+                            <label for="q5a">Because they provide a feeling of recognition and appreciation</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="q5b" name="q5" value="Because they allow comparison with others">
+                            <label for="q5b">Because they allow comparison with others</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="q5c" name="q5" value="Because they reassure about the image they project">
+                            <label for="q5c">Because they reassure about the image they project</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="q5d" name="q5" value="Because they can influence self-confidence">
+                            <label for="q5d">Because they can influence self-confidence</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <label class="question-text">6) Can others' opinions impact self-esteem? Give an example.</label>
+                    <textarea rows="3" name="q6" placeholder="Your response..." required></textarea>
+                </div>
+
+                <div class="question-card">
+                    <label class="question-text">7) Have you ever spent more time than intended on an application? Why is this so frequent?</label>
+                    <textarea rows="3" name="q7" placeholder="Your response..." required></textarea>
+                </div>
+
+                <div class="question-card">
+                    <label class="question-text">8) How can comparison with others affect mental well-being?</label>
+                    <div class="options">
+                        <div class="option-item">
+                            <input type="radio" id="q8a" name="q8" value="It can cause a lack of self-confidence" required>
+                            <label for="q8a">It can cause a lack of self-confidence</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="q8b" name="q8" value="It can create stress or anxiety">
+                            <label for="q8b">It can create stress or anxiety</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="q8c" name="q8" value="It can give the impression of never being good enough">
+                            <label for="q8c">It can give the impression of never being good enough</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="q8d" name="q8" value="It can lead to lower self-esteem">
+                            <label for="q8d">It can lead to lower self-esteem</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <label class="question-text">9) In your opinion, when does social media use become unhealthy?</label>
+                    <textarea rows="3" name="q9" placeholder="Your response..." required></textarea>
+                </div>
+
+                <div class="question-card">
+                    <label class="question-text">10) Why do some people feel stress or anxiety about publishing content?</label>
+                    <div class="options">
+                        <div class="option-item">
+                            <input type="radio" id="q10a" name="q10" value="Out of fear of judgment or criticism" required>
+                            <label for="q10a">Out of fear of judgment or criticism</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="q10b" name="q10" value="From concern about not getting enough likes or reactions">
+                            <label for="q10b">From concern about not getting enough likes or reactions</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="q10c" name="q10" value="Because they compare themselves to others' posts">
+                            <label for="q10c">Because they compare themselves to others' posts</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="q10d" name="q10" value="Because they lack self-confidence">
+                            <label for="q10d">Because they lack self-confidence</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <label class="question-text">11) Do you think it's easy to step back from social media? Why?</label>
+                    <textarea rows="3" name="q11" placeholder="Your response..." required></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn">Submit Questionnaire</button>
+                <div id="statusBottom"></div>
+            </form>
+        </div>
+
+        <!-- CLOSING -->
+        <div class="closing">
+            <h2>Moving Forward</h2>
+            <p>
+                Justine's journey shows that awareness is the first step toward change. Understanding how social media impacts mental health, self-esteem, and identity construction empowers you to make conscious choices about your relationship with technology.
+            </p>
+            <p>
+                Remember: Your worth is not measured in likes. Your identity is authentic. And it's okay to not be okay sometimes.
+            </p>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="window.location.href='index.html'">Return to Home</button>
+                <button class="btn btn-secondary" onclick="window.location.href='feed.html'">Back to Feed</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD1wyFeEOrf2wOw8ha7HjXpA2HdBQV64XQ",
+            authDomain: "webdoc-6328e.firebaseapp.com",
+            databaseURL: "https://webdoc-6328e-default-rtdb.firebaseio.com/",
+            projectId: "webdoc-6328e",
+            storageBucket: "webdoc-6328e.firebasestorage.app",
+            messagingSenderId: "1089872195546",
+            appId: "1:1089872195546:web:5a1830c68fe6a88d76dae3"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        const quizForm = document.getElementById('quizForm');
+        const status = document.getElementById('status');
+        const statusBottom = document.getElementById('statusBottom');
+
+        quizForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Sending...";
+
+            const formData = new FormData(quizForm);
+            const data = Object.fromEntries(formData.entries());
+            data.submittedAt = new Date().toLocaleString();
+
+            // Send to Firebase
+            push(ref(db, 'survey_responses'), data)
+                .then(() => {
+                    // Display success message at top
+                    status.style.display = "block";
+                    status.style.backgroundColor = "rgba(76, 175, 80, 0.2)";
+                    status.style.color = "#4CAF50";
+                    status.style.border = "1px solid #4CAF50";
+                    status.innerText = "Thank you! Your responses have been saved. 🎉";
+
+                    // Display success message at bottom
+                    statusBottom.style.display = "block";
+                    statusBottom.style.backgroundColor = "rgba(76, 175, 80, 0.2)";
+                    statusBottom.style.color = "#4CAF50";
+                    statusBottom.style.border = "1px solid #4CAF50";
+                    statusBottom.innerText = "✓ Your responses have been successfully saved. Thank you for participating!";
+                    
+                    quizForm.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "Submit Questionnaire";
+                    
+                    // Auto-hide messages after 6 seconds
+                    setTimeout(() => {
+                        status.style.display = "none";
+                        statusBottom.style.display = "none";
+                    }, 6000);
+                })
+                .catch((error) => {
+                    // Display error at top
+                    status.style.display = "block";
+                    status.style.backgroundColor = "rgba(244, 67, 54, 0.2)";
+                    status.style.color = "#F44336";
+                    status.style.border = "1px solid #F44336";
+                    status.innerText = "Error: " + error.message;
+
+                    // Display error at bottom
+                    statusBottom.style.display = "block";
+                    statusBottom.style.backgroundColor = "rgba(244, 67, 54, 0.2)";
+                    statusBottom.style.color = "#F44336";
+                    statusBottom.style.border = "1px solid #F44336";
+                    statusBottom.innerText = "✗ Error submitting your responses: " + error.message;
+                    
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "Submit Questionnaire";
+                });
+        });
+    </script>
+</body>
+</html>

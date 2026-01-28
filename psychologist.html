@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychology</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="register-background">
+        <div class="floating-icon heart-icon pink" style="top: 80px; left: 15%;"></div>
+        <div class="floating-icon heart-icon orange" style="top: 150px; right: 12%;"></div>
+        <div class="floating-icon heart-icon pink" style="bottom: 200px; left: 10%;"></div>
+        <div class="floating-icon heart-icon pink" style="bottom: 250px; right: 8%;"></div>
+        <div class="floating-icon message-icon orange" style="top: 200px; left: 20%;"></div>
+        <div class="floating-icon message-icon pink" style="top: 180px; right: 18%;"></div>
+        <div class="floating-icon heart-icon orange" style="top: 50%; left: 12%;"></div>
+        <div class="floating-icon heart-icon orange" style="top: 55%; right: 15%;"></div>
+    </div>
+
+    <div class="side-character left">
+        <img src="images/mirroir.png" alt="Justine">
+    </div>
+
+    <div class="side-character right">
+        <img src="images/justine-right.png" alt="Justine">
+    </div>
+
+    <div class="iphone-frame">
+        <div class="iphone-notch"></div>
+        <div class="iphone-screen">
+            <div class="psychologist-page">
+                <div class="feed-header">
+                    <button class="header-back-btn" onclick="goBackToFeed()">← Back</button>
+                    <div class="header-title">Psychology</div>
+                    <div class="header-placeholder"></div>
+                </div>
+
+                <!-- Video Section -->
+                <div class="psychologist-video-feed" id="videoSection">
+                    <div class="post-card orange-card">
+                        <div class="post-header">
+                            <div class="user-info">
+                                <div class="user-avatar">
+                                    <img src="images/psycologue.png" alt="Psychologist" class="avatar-img">
+                                </div>
+                                <div class="username">Noemie Psychologist</div>
+                            </div>
+                            <div class="post-menu">
+                                <span class="menu-dots">···</span>
+                            </div>
+                        </div>
+                        <div class="post-video-container">
+                            <video class="post-video" controls controlsList="nodownload">
+                                <source src="videos/Interview-psy.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="post-caption">Teenagers' Self-Esteem in the Digital Era, professional insights</div>
+                        <div class="post-footer">
+                            <div class="likes">
+                                <img src="images/like.png" alt="Like" class="footer-icon">
+                                <span>3.2K likes</span>
+                            </div>
+                            <div class="comments">
+                                <img src="images/comment.png" alt="Comment" class="footer-icon">
+                                <span>456 comments</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: center; padding: 10px 0;">
+                            <button class="ask-question-trigger-btn" onclick="openChatInterface()">
+                               contact psychologist
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Questions Section -->
+                <div class="questions-section feed-content" id="questionsSection" style="display: none;">
+                    <div class="questions-header">
+                        <button class="back-btn" onclick="backToVideo()">← Back to Video</button>
+                        <h3>Ask Me Anything</h3>
+                    </div>
+                    <div class="questions-list" id="questionsList">
+                        <!-- Questions will be dynamically inserted here -->
+                    </div>
+                </div>
+
+                <!-- Chat Section -->
+                <div class="chat-section feed-content" id="chatSection" style="display: none;">
+                    <div class="chat-header-section">
+                        <button class="back-btn" onclick="backToQuestions()">← Back to Questions</button>
+                        <h3>Chat with Eva</h3>
+                    </div>
+                    <div class="messages-container" id="messagesContainer">
+                        <!-- Chat messages will appear here -->
+                    </div>
+                    <div class="chat-button-group">
+                        <button class="ask-another-btn" onclick="backToQuestions()">← Ask Another</button>
+                        <button class="continue-to-feed-btn" onclick="goBackToFeed()">Continue →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="psychologist.js"></script>
+</body>
+</html>

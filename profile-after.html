@@ -8,6 +8,17 @@
 </head>
 <body>
 
+
+    <div class="side-character left">
+        <img src="images/mirroir.png" alt="Justine">
+    </div>
+
+    <!-- Right Character -->
+    <div class="side-character right">
+        <img src="images/justine-right.png" alt="Justine">
+    </div>
+
+
 <div class="iphone-frame">
     <div class="iphone-notch"></div>
     <div class="iphone-screen profile-after">
@@ -42,56 +53,50 @@
                     <button class="profile-edit-icon">✎</button>
                 </div>
             </div>
+
+            <div class="profile-stats-bar">
+                <div class="stat-item">
+                    <strong id="postCount">0</strong>
+                    <span class="stat-label">Post:</span>
+                </div>
+                <div class="stat-item">
+                    <strong id="postCount">0</strong>
+                    <span class="stat-label">Followers</span>
+                </div>
+                <div class="stat-item">
+                    <strong>0</strong>
+                    <span class="stat-label">Following</span>
+                </div>
+            </div>
+
+            <div class="profile-posts-container">
+                <div class="profile-posts-grid" id="profilePostsGrid">
+                </div>
+            </div>
+
+            <div class="profile-continue-section">
+                <button class="continue-scrolling-btn" onclick="continueBrowsing()">Continue scrolling</button>
+            </div>
         </div>
 
-        <!-- STATS -->
-        <div class="profile-stats-bar">
-            <div class="stat-item">
-                <strong id="postCount">0</strong>
-                <span class="stat-label">Post:</span>
-            </div>
-            <div class="stat-item">
-                <strong id="postCount">0</strong>
-                <span class="stat-label">Followers</span>
-            </div>
-            <div class="stat-item">
-                <strong>0</strong>
-                <span class="stat-label">Following</span>
-            </div>
-        </div>
-
-        <div class="profile-posts-container">
-            <div class="profile-posts-grid" id="profilePostsGrid">
-            </div>
-        </div>
-
-        <div class="profile-continue-section">
-            <button class="continue-scrolling-btn" onclick="continueBrowsing()">Continue scrolling</button>
-        </div>
-
-        <div class="bottom-navigation">
-            <button class="nav-btn">
+        <div class="bottom-navigation-2">
+            <button class="nav-btn-2">
                 <img src="images/normal-icon1.svg" alt="Home">
             </button>
-            <button class="nav-btn">
+            <button class="nav-btn-2">
                 <img src="images/normal-icon2.svg" alt="Search">
             </button>
-            <button class="nav-btn">
+            <button class="nav-btn-2">
                 <img src="images/normal-icon3.svg" alt="Add">
             </button>
-            <button class="nav-btn active">
-                <div class="nav-profile-pic">
+            <button class="nav-btn-2 active">
+                <div class="nav-profile-pic-2">
                     <img id="navAfterProfileImage" alt="Profile" style="display: none;">
-                    <div class="nav-placeholder">
-                        <img src="images/profil-icon.webp" alt="Profile icon">
-                    </div>
                 </div>
             </button>
         </div>
-
     </div>
 </div>
-
 <script src="profil-after.js"></script>
 </body>
 </html>

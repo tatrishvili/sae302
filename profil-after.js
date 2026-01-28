@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let postImg = null;
     
+    // Clear old posts array if needed (prevent accumulation)
+    // Only keep posts that were added in THIS session
     if (justinePostData) {
         try {
             const post = JSON.parse(justinePostData);
@@ -35,20 +37,31 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Loading profile photo...');
         avatar.src = selectedProfilePhoto;
         avatar.style.display = 'block';
-        avatar.onload = () => console.log('Profile image loaded successfully');
+        avatar.onload = () => {
+            console.log('Profile image loaded successfully');
+            if (placeholderIcon) {
+                placeholderIcon.style.display = 'none !important';
+            }
+        };
         avatar.onerror = () => console.error('Failed to load profile image');
         
+        // Immediately hide placeholder
         if (placeholderIcon) {
-            placeholderIcon.style.display = 'none';
+            placeholderIcon.style.display = 'none !important';
         }
         
         // Also update nav profile image
         if (navAvatar) {
             navAvatar.src = selectedProfilePhoto;
             navAvatar.style.display = 'block';
+            navAvatar.onload = () => {
+                if (navPlaceholder) {
+                    navPlaceholder.style.display = 'none !important';
+                }
+            };
         }
         if (navPlaceholder) {
-            navPlaceholder.style.display = 'none';
+            navPlaceholder.style.display = 'none !important';
         }
     } else {
         console.log('No profile photo in localStorage, showing placeholder');
@@ -60,22 +73,55 @@ document.addEventListener('DOMContentLoaded', () => {
     // Display user posts in grid
     if (postImg) {
         console.log('Loading post photo...');
-        grid.innerHTML = `
-            <div class="profile-post-item">
-                <img src="${postImg}" alt="Post" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-        `;
-        postCount.textContent = '1';
         
-        // Update followers count when post is made
+        // Get posts array from sessionStorage (can store multiple posts)
+        let postsArray = [];
+        const postsData = sessionStorage.getItem('justinePostsArray');
+        
+        if (postsData) {
+            try {
+                postsArray = JSON.parse(postsData);
+            } catch (e) {
+                console.error('Error parsing posts array:', e);
+                postsArray = [];
+            }
+        }
+        
+        // Add current post to array if not already there
+        if (postImg && !postsArray.some(p => p === postImg)) {
+            postsArray.push(postImg);
+            sessionStorage.setItem('justinePostsArray', JSON.stringify(postsArray));
+        }
+        
+        // Display all posts in grid
+        grid.innerHTML = '';
+        postsArray.forEach((imgSrc) => {
+            const postItem = document.createElement('div');
+            postItem.className = 'profile-post-item';
+            postItem.innerHTML = `<img src="${imgSrc}" alt="Post" style="width: 100%; height: 100%; object-fit: cover;">`;
+            grid.appendChild(postItem);
+        });
+        
+        postCount.textContent = postsArray.length.toString();
+        
+        // Update followers count from sessionStorage
         const followerElements = document.querySelectorAll('[id="postCount"]');
         if (followerElements.length > 1) {
             // The second postCount element is actually followers
-            const randomFollowers = Math.floor(Math.random() * 2) + 3; // 3 or 4 followers
-            followerElements[1].textContent = randomFollowers;
+            const storedFollowers = sessionStorage.getItem('justineFollowers');
+            if (storedFollowers) {
+                followerElements[1].textContent = storedFollowers;
+            } else {
+                // Fallback if not stored
+                const baseFollowers = 3;
+                const randomAddition = Math.floor(Math.random() * 3) + (postsArray.length > 1 ? 2 : 0);
+                const totalFollowers = baseFollowers + randomAddition;
+                followerElements[1].textContent = totalFollowers.toString();
+                sessionStorage.setItem('justineFollowers', totalFollowers.toString());
+            }
         }
         
-        console.log('Post displayed successfully');
+        console.log('Posts displayed successfully:', postsArray.length);
     } else {
         console.log('No post image found');
     }

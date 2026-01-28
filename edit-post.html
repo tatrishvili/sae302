@@ -19,7 +19,7 @@
     </div>
 
     <div class="side-character left">
-        <img src="images/justine-left.png" alt="Justine">
+        <img src="images/mirroir.png" alt="Justine"> 
     </div>
 
     <div class="side-character right">
@@ -40,9 +40,9 @@
                 <!-- Step 1: Photo Selection -->
                 <div class="step-container" id="stepSelection">
                     <h3 class="step-title">Choose a photo to share</h3>
-                    <p class="step-subtitle">Everyone looks so good... maybe I should pick my best one</p>
+                    <p class="step-subtitle">I should pick my best photo</p>
                     
-                    <div class="post-photo-options">
+                    <div class="post-photo-options" id="firstPostPhotos">
                         <div class="post-photo-option" data-photo="images/justine1.png" onclick="selectPostPhoto(this)">
                             <img src="images/justine1.png" alt="Option 1">
                             <div class="photo-overlay">
@@ -62,6 +62,26 @@
                             </div>
                         </div>
                     </div>
+                    <div class="post-photo-options hidden" id="secondPostPhotos">
+                        <div class="post-photo-option" data-photo="images/option1.png" onclick="selectPostPhoto(this)">
+                            <img src="images/option1.png" alt="Option 1">
+                            <div class="photo-overlay">
+                                <span class="check-mark">✓</span>
+                            </div>
+                        </div>
+                        <div class="post-photo-option" data-photo="images/option2.png" onclick="selectPostPhoto(this)">
+                            <img src="images/option2.png" alt="Option 2">
+                            <div class="photo-overlay">
+                                <span class="check-mark">✓</span>
+                            </div>
+                        </div>
+                        <div class="post-photo-option" data-photo="images/option3.png" onclick="selectPostPhoto(this)">
+                            <img src="images/option3.png" alt="Option 3">
+                            <div class="photo-overlay">
+                                <span class="check-mark">✓</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="step-container hidden" id="stepEditor">
                     <div class="editor-preview">
@@ -69,10 +89,9 @@
                         <img id="originalPhoto" src="" alt="Selected photo" style="display: none;">
                     </div>
 
-                    <div class="justine-thought">
-                        <p>"Everyone looks so good... maybe I should retouch it just a little."</p>
+                    <div class="justine-thought" id="justineThought">
+                        <p>"maybe I should retouch it just a little ?"</p>
                     </div>
-
                     <div class="editor-controls">
                         <div class="control-group">
                             <label>Brightness</label>
@@ -92,7 +111,34 @@
                             </select>
                         </div>
                     </div>
-
+                    <div class="editor-controls hidden" id="advancedControls">
+                        <hr style="margin: 20px 0; opacity: 0.3;">
+                        <h4 style="text-align: center; margin-bottom: 15px; font-size: 14px; color: #666;">Face Retouching</h4>
+                        <div class="control-group">
+                            <label>Face Smoothing</label>
+                            <input type="range" id="smoothingSlider" min="0" max="100" value="0" oninput="applyFilters()">
+                        </div>
+                        <div class="control-group">
+                            <label>Skin Tone</label>
+                            <input type="range" id="skinToneSlider" min="-30" max="30" value="0" oninput="applyFilters()">
+                        </div>
+                        <div class="control-group">
+                            <label>Eye Brightening</label>
+                            <input type="range" id="eyeBrightnessSlider" min="0" max="50" value="0" oninput="applyFilters()">
+                        </div>
+                        <div class="control-group">
+                            <label>Face Slimming</label>
+                            <input type="range" id="faceSlimmingSlider" min="0" max="50" value="0" oninput="applyFilters()">
+                        </div>
+                        <div class="control-group">
+                            <label>Blushing/Blush</label>
+                            <input type="range" id="blushSlider" min="0" max="100" value="0" oninput="applyFilters()">
+                        </div>
+                        <div class="control-group">
+                            <label>Makeup</label>
+                            <input type="range" id="makeupSlider" min="0" max="100" value="0" oninput="applyFilters()">
+                        </div>
+                    </div>
                     <div class="editor-actions">
                         <button class="edit-btn secondary" onclick="resetEdits()">Reset</button>
                         <button class="edit-btn primary" onclick="savePost()">Post It!</button>
